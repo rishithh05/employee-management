@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "Employee Management API - Rishith",
+    "_postman_id": "e6b0fbb5-7c8e-47f2-b36d-7c8f7a61b8fa",
+    "description": "Postman collection for testing all endpoints of the Employee Management REST API built with Spring Boot. Example data uses name 'Rishith'.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Root Message",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/employees",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees"]
+        }
+      }
+    },
+    {
+      "name": "Create Employee (Basic - Name & Email)",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/employees/create/basic?firstName=Rishith&email=rishith@example.com",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "create", "basic"],
+          "query": [
+            { "key": "firstName", "value": "Rishith" },
+            { "key": "email", "value": "rishith@example.com" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Employee (With Phone - JSON Body)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Rishith\",\n  \"lastName\": \"Kumar\",\n  \"email\": \"rishith.kumar@example.com\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Hyderabad\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/employees/create/with-phone",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "create", "with-phone"]
+        }
+      }
+    },
+    {
+      "name": " Get Employee By Email (Specification)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/employees/by-email?email=rishith.kumar@example.com&method=spec",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "by-email"],
+          "query": [
+            { "key": "email", "value": "rishith.kumar@example.com" },
+            { "key": "method", "value": "spec" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Employee By Name (HQL)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/employees/by-name?name=Rishith&method=hql",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "by-name"],
+          "query": [
+            { "key": "name", "value": "Rishith" },
+            { "key": "method", "value": "hql" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Employee Details (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lastName\": \"Reddy\",\n  \"phone\": \"9123456789\",\n  \"address\": \"Bangalore\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/employees/1/details",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "1", "details"]
+        }
+      }
+    },
+    {
+      "name": "Update Employee Phone Only (PATCH)",
+      "request": {
+        "method": "PATCH",
+        "url": {
+          "raw": "http://localhost:8080/api/employees/1/phone?phone=9000011111",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "1", "phone"],
+          "query": [{ "key": "phone", "value": "9000011111" }]
+        }
+      }
+    },
+    {
+      "name": "Delete Employee By Email",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/employees/by-email?email=rishith.kumar@example.com",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "by-email"],
+          "query": [{ "key": "email", "value": "rishith.kumar@example.com" }]
+        }
+      }
+    }
+  ]
+}
